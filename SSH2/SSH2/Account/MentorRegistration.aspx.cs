@@ -67,7 +67,7 @@ namespace SSH_ASPJ.Account
                 var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
                 var userIdentity = manager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                 authenticationManager.SignIn(new AuthenticationProperties() { }, userIdentity);
-                Response.Redirect("/Account/Confirm.aspx");
+                Response.Redirect("/Account/EmailBeingSent.aspx");
             }
             else
             {
