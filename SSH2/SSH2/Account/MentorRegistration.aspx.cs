@@ -11,6 +11,7 @@ using SSH2.Models;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace SSH_ASPJ.Account
 {
@@ -56,6 +57,24 @@ namespace SSH_ASPJ.Account
 
             if (result.Succeeded)
             {
+
+                string cs = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                SqlConnection con = new SqlConnection(cs);
+                SqlCommand cmd =
+                    new SqlCommand("INSERT INTO userInfo (Username, FullName, Institution, FieldOfIndustry, Designation, RegistrationMode) VALUES(@username, @fullname, @institution, @FOI, @designation, @registrationMode)", con);
+                cmd.Parameters.AddWithValue("@username", mentorUsername.Text);
+                cmd.Parameters.AddWithValue("@fullname", mentorFullName.Text);
+                cmd.Parameters.AddWithValue("@institution", MentorInstitution.Text);
+                cmd.Parameters.AddWithValue("@FOI", Convert.ToString(MentorFOI.SelectedValue));
+                cmd.Parameters.AddWithValue("@designation", MentorDesignation.Text);
+                cmd.Parameters.AddWithValue("@registrationMode", "Mentor");
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+
+
+
                 // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                 string code = manager.GenerateEmailConfirmationToken(user.Id);
                 string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);

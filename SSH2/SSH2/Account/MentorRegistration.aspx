@@ -27,7 +27,7 @@
         </div>
 
         <div class="form-group">
-            <asp:Label runat="server" AssociatedControlID="" CssClass="col-md-2 control-label">Full Name</asp:Label>
+            <asp:Label runat="server" AssociatedControlID="mentorFullName" CssClass="col-md-2 control-label">Full Name</asp:Label>
             <div class="col-md-10">
                 <asp:TextBox runat="server" ID="mentorFullName" CssClass="form-control" TextMode="SingleLine" />
                    <asp:RequiredFieldValidator runat="server" ControlToValidate="mentorFullName"
