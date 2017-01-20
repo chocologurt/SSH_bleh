@@ -42,7 +42,7 @@ namespace SSH2.Account
             //// Enable this after setting up two-factor authentientication
             //PhoneNumber.Text = manager.GetPhoneNumber(User.Identity.GetUserId()) ?? String.Empty;
 
-            //TwoFactorEnabled = manager.GetTwoFactorEnabled(User.Identity.GetUserId());
+            
 
             //LoginsCount = manager.GetLogins(User.Identity.GetUserId()).Count;
 
@@ -53,7 +53,7 @@ namespace SSH2.Account
             var currentUser = manager.FindById(Context.User.Identity.GetUserId());
             string userpassword = currentUser.PasswordHash;
             string userPhone = currentUser.PhoneNumber;
-
+            TwoFactorEnabled = manager.GetTwoFactorEnabled(User.Identity.GetUserId());
 
             if (!IsPostBack)
             {
@@ -62,6 +62,7 @@ namespace SSH2.Account
 
                 ChangePassword.Visible = true;
                 PhoneNumber.Text = userPhone;
+             
 
             //    if (!IsPostBack)
             //{
