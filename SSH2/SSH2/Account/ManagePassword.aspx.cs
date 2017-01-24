@@ -6,6 +6,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System.Data.SqlClient;
+using SSH2.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace SSH2.Account
 {
@@ -53,20 +56,46 @@ namespace SSH2.Account
         {
             if (IsValid)
             {
-                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
-                IdentityResult result = manager.ChangePassword(User.Identity.GetUserId(), CurrentPassword.Text, NewPassword.Text);
-                if (result.Succeeded)
+                var manager2 = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
+                var user2 = manager2.FindByName(Context.User.Identity.GetUserName());
+                string username = user2.UserName;
+
+               
+
+                var myPasswordHasher = new PasswordHasher();
+                //string hashedpassword = myPasswordHasher.HashPassword(NewPassword.Text);
+
+                string cs = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                SqlConnection con = new SqlConnection(cs);
+                SqlCommand cmd =
+                    new SqlCommand("SELECT password FROM pwList WHERE userName = @userName", con);
+                cmd.Parameters.AddWithValue("@userName", username);
+                con.Open();
+                string hashedpassword2 = Convert.ToString(cmd.ExecuteScalar());
+              PasswordVerificationResult results = myPasswordHasher.VerifyHashedPassword(hashedpassword2, NewPassword.Text);
+                if (results.Equals("Failed"))
                 {
-                    var user = manager.FindById(User.Identity.GetUserId());
-                    signInManager.SignIn( user, isPersistent: false, rememberBrowser: false);
-                    Response.Redirect("~/Account/Manage?m=ChangePwdSuccess");
+
+                    var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
+                    var signInManager = Context.GetOwinContext().Get<ApplicationSignInManager>();
+                    IdentityResult result = manager.ChangePassword(User.Identity.GetUserId(), CurrentPassword.Text, NewPassword.Text);
+                    if (result.Succeeded)
+                    {
+                        var user = manager.FindById(User.Identity.GetUserId());
+                        signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
+                        Response.Redirect("~/Account/Manage?m=ChangePwdSuccess");
+                    }
+                    else
+                    {
+                        AddErrors(result);
+                    }
                 }
                 else
                 {
-                    AddErrors(result);
+                    ErrorMessage.Text = "Please do not use a recent password";
                 }
             }
+
         }
 
         protected void SetPassword_Click(object sender, EventArgs e)

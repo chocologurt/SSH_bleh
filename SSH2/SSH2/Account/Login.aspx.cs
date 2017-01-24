@@ -74,7 +74,7 @@ namespace SSH2.Account
                     {
                         // This doen't count login failures towards account lockout
                         // To enable password failures to trigger lockout, change to shouldLockout: true
-                        var result = signinManager.PasswordSignIn(userName.Text, password, RememberMe.Checked, shouldLockout: false);
+                        var result = signinManager.PasswordSignIn(userName.Text, password, RememberMe.Checked, shouldLockout: true);
 
                         switch (result)
                         {

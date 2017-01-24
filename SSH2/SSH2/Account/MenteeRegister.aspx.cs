@@ -16,6 +16,7 @@ namespace SSH_ASPJ.Account
     {
         protected void CreateUser_Click(object sender, EventArgs e)
         {
+
             var manager2 = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
             var user2 = manager2.FindByName(Username.Text);
             if (user2 == null)
@@ -56,16 +57,31 @@ namespace SSH_ASPJ.Account
                     string cs = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
                     SqlConnection con = new SqlConnection(cs);
                     SqlCommand cmd =
-                        new SqlCommand("INSERT INTO userInfo (Username, FullName, Institution, FieldOfIndustry, Designation, RegistrationMode) VALUES(@username, @fullname, @institution, @FOI, @designation, @registrationMode)", con);
-                    cmd.Parameters.AddWithValue("@username", Username.Text);
-                    cmd.Parameters.AddWithValue("@fullname", fullName.Text);
+                        new SqlCommand("INSERT INTO users (userID, userInstitution, userMode, userDesignation, userFieldOfIndustry, FullName) VALUES(@userId, @institution,@registrationMode, @designation, @userFOI, @fullname )", con);
+                    cmd.Parameters.AddWithValue("@userId", Username.Text);
                     cmd.Parameters.AddWithValue("@institution", userInstitution.Text);
-                    cmd.Parameters.AddWithValue("@FOI", Convert.ToString(userFOI.SelectedValue));
+                    cmd.Parameters.AddWithValue("@registrationMode", 1);
                     cmd.Parameters.AddWithValue("@designation", "Student");
-                    cmd.Parameters.AddWithValue("@registrationMode", "Mentee");
+                    cmd.Parameters.AddWithValue("@userFOI", Convert.ToString(userFOI.SelectedValue));
+                    cmd.Parameters.AddWithValue("@fullname", fullName.Text);
                     con.Open();
                     cmd.ExecuteNonQuery();
                     con.Close();
+
+                    var myPasswordHasher = new PasswordHasher();
+                    string hashedpassword = myPasswordHasher.HashPassword(password);
+
+                    string cs2 = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+                    SqlConnection con2 = new SqlConnection(cs2);
+                    SqlCommand cmd2 =
+                        new SqlCommand("INSERT INTO pwList (userName, password) VALUES(@username, @password)", con2);
+                    cmd2.Parameters.AddWithValue("@username", Username.Text);
+                    cmd2.Parameters.AddWithValue("@password", hashedpassword);
+                    con2.Open();
+                    cmd2.ExecuteNonQuery();
+                    con2.Close();
+
+
 
                     //    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     string code = manager.GenerateEmailConfirmationToken(user.Id);
@@ -96,9 +112,9 @@ namespace SSH_ASPJ.Account
                 {
                     ErrorMessage.Text = "This email that you have provided is already associated with another account, please give another email.";
                 }
-                else if (Username.Text == username2 )
+                else if (Username.Text == username2)
                 {
-                    ErrorMessage.Text = "UserName is already taken, please choose a different user name. " ;
+                    ErrorMessage.Text = "UserName is already taken, please choose a different user name. ";
 
                 }
             }
