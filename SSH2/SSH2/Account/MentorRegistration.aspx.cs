@@ -61,13 +61,13 @@ namespace SSH_ASPJ.Account
                 string cs = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
                 SqlConnection con = new SqlConnection(cs);
                 SqlCommand cmd =
-                    new SqlCommand("INSERT INTO userInfo (Username, FullName, Institution, FieldOfIndustry, Designation, RegistrationMode) VALUES(@username, @fullname, @institution, @FOI, @designation, @registrationMode)", con);
-                cmd.Parameters.AddWithValue("@username", mentorUsername.Text);
-                cmd.Parameters.AddWithValue("@fullname", mentorFullName.Text);
+                    new SqlCommand("INSERT INTO users (userId, userInstitution, userMode, userDesignation, userFieldOfIndustry, FullName) VALUES(@userId, @institution,@registrationMode, @designation, @userFOI, @fullname )", con);
+                cmd.Parameters.AddWithValue("@userId", mentorUsername.Text);
                 cmd.Parameters.AddWithValue("@institution", MentorInstitution.Text);
-                cmd.Parameters.AddWithValue("@FOI", Convert.ToString(MentorFOI.SelectedValue));
-                cmd.Parameters.AddWithValue("@designation", MentorDesignation.Text);
-                cmd.Parameters.AddWithValue("@registrationMode", "Mentor");
+                cmd.Parameters.AddWithValue("@registrationMode", 2);
+                cmd.Parameters.AddWithValue("@designation", "Student");
+                cmd.Parameters.AddWithValue("@userFOI", Convert.ToString(MentorFOI.SelectedValue));
+                cmd.Parameters.AddWithValue("@fullname", mentorFullName.Text);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();

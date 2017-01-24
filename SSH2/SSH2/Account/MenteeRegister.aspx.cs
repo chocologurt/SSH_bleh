@@ -51,13 +51,13 @@ namespace SSH_ASPJ.Account
                 string cs = System.Configuration.ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
                 SqlConnection con = new SqlConnection(cs);
                 SqlCommand cmd =
-                    new SqlCommand("INSERT INTO userInfo (Username, FullName, Institution, FieldOfIndustry, Designation, RegistrationMode) VALUES(@username, @fullname, @institution, @FOI, @designation, @registrationMode)", con);
-                cmd.Parameters.AddWithValue("@username", Username.Text);
-                cmd.Parameters.AddWithValue("@fullname", fullName.Text);
+                    new SqlCommand("INSERT INTO users (userId, userInstitution, userMode, userDesignation, userFieldOfIndustry, FullName) VALUES(@userId, @institution,@registrationMode, @designation, @userFOI, @fullname )", con);
+                cmd.Parameters.AddWithValue("@userId", Username.Text);
                 cmd.Parameters.AddWithValue("@institution", userInstitution.Text);
-                cmd.Parameters.AddWithValue("@FOI", Convert.ToString(userFOI.SelectedValue));
+                cmd.Parameters.AddWithValue("@registrationMode", 1);
                 cmd.Parameters.AddWithValue("@designation", "Student");
-                cmd.Parameters.AddWithValue("@registrationMode", "Mentee");
+                cmd.Parameters.AddWithValue("@userFOI", Convert.ToString(userFOI.SelectedValue));
+                cmd.Parameters.AddWithValue("@fullname", fullName.Text);
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
