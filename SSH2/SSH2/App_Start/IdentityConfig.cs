@@ -13,6 +13,9 @@ using System.Configuration;
 using System.Diagnostics;
 using SSH2.Account;
 using Twilio;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace SSH2
 {
@@ -105,7 +108,9 @@ namespace SSH2
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
+           
         }
+       
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
@@ -155,6 +160,11 @@ namespace SSH2
             return manager;
         }
     }
+
+
+
+
+
 
     public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
     {

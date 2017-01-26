@@ -67,15 +67,6 @@ namespace SSH2.Account {
         protected global::System.Web.UI.WebControls.TextBox Password;
         
         /// <summary>
-        /// ConfirmPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ConfirmPassword;
-        
-        /// <summary>
         /// imagePassword control.
         /// </summary>
         /// <remarks>
@@ -92,6 +83,15 @@ namespace SSH2.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload imagePasswordControl;
+        
+        /// <summary>
+        /// ctrlGoogleReCaptcha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::GoogleReCaptcha.GoogleReCaptcha ctrlGoogleReCaptcha;
         
         /// <summary>
         /// RememberMe control.

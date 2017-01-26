@@ -72,6 +72,8 @@
                         
                         <% } %>
                     </dd>
+                    <dt>Profile Picture:</dt>
+                    <dd> <asp:HyperLink NavigateUrl="/Account/AddOrChangeProfilePic" Text="[Add/Change]" Visible="true" ID="ProfilePic" runat="server" /></dd>
                 </dl>
             </div>
         </div>
