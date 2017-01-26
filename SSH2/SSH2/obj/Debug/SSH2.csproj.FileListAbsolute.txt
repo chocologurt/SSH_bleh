@@ -265,3 +265,17 @@ C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\bin\Micros
 C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\obj\Debug\SSH2.csprojResolveAssemblyReference.cache
 C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\obj\Debug\SSH2.dll
 C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\obj\Debug\SSH2.pdb
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\obj\Debug\Interop.MSUtil.dll
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\obj\Debug\SSH2.csproj.ResolveComReference.cache
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\bin\libeay32.dll
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\bin\ssleay32.dll
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\bin\AjaxControlToolkit.dll
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\bin\BouncyCastle.Crypto.dll
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\bin\ManagedOpenSsl.dll
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\bin\Microsoft.AspNet.SignalR.Core.dll
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\bin\Microsoft.AspNet.SignalR.SystemWeb.dll
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\bin\ManagedOpenSsl.pdb
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\bin\ManagedOpenSsl.xml
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\bin\Microsoft.AspNet.SignalR.Core.xml
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\bin\Microsoft.AspNet.SignalR.SystemWeb.xml
+C:\Users\Guangyao\Source\Repos\SSH_StudySmartNHard\SSH_bleh\SSH2\SSH2\bin\Interop.MSUtil.dll

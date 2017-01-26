@@ -1,0 +1,70 @@
+﻿
+.content {
+	height: auto;
+	width: 100%;
+	padding-bottom: 0px;
+    overflow: hidden;
+    	
+}
+
+.ModalPopupBG
+{
+    background-color: #666699;
+    filter: alpha(opacity=50);
+    opacity: 0.7;
+}
+
+.postDiv
+{
+    min-width:200px;
+    min-height:150px;
+    background:white;
+}
+.replyBox{
+    height:200px;
+}
+.contentBox{
+    width: 85%;
+}
+textarea{
+    resize: none;
+    border-left:0.5px solid black;
+    border-right:0.5px solid black;
+    border-top:0px solid black;
+}
+.contentText{
+    padding-left:130px;
+    
+}
+.user-detail {
+	height: 50px;
+	width: 85%;
+	padding-bottom: 0px;
+	background-color: hsl(0, 0%, 96%);
+    border-left:0.5px solid black;
+    border-right:0.5px solid black;
+
+}
+.post{
+
+}
+.title{
+    background-color: hsl(195, 73%, 58%);
+    color:white;
+    padding-top:20px;
+    border-radius:5px 5px 0px 0px;
+    margin-top: 20px;
+    width:85%;
+    font:bold 20px arial;
+    border:1px solid black;
+}
+.padding{
+    font-size:0.75em;
+    padding-bottom:10px;
+    text-align:right;
+    width:85%;
+    border-left:1px solid black;
+    border-right:1px solid black;
+    border-bottom:2px solid grey;
+
+}

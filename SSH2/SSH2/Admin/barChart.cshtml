@@ -1,0 +1,41 @@
+﻿@using ASPJ;
+@using MSUtil;
+@{
+    string cmd = Request.QueryString["cmd"];
+    string title = Request.QueryString["title"];
+    Logger l = new Logger(cmd);
+    ILogRecordset record = l.executeCommand();
+    List<string> xValue = new List<string>();
+    List<string> yValues = new List<string>();
+    if (record != null && record.getColumnName(0)!="Filename" && record.getColumnName(1) != "Filename")
+    {
+        while (!record.atEnd())
+        {
+
+            ILogRecord row = record.getRecord();
+            xValue.Add(row.getValue(0).ToString());
+            yValues.Add(row.getValue(1).ToString());
+
+            record.moveNext();
+        }
+    }
+    var myChart = new Chart(width: 600, height: 400)
+        .AddTitle(title)
+        .AddSeries("Default",
+            xValue: xValue,
+            yValues: yValues)
+        .Write();
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+    
+    </div>
+</body>
+</html>

@@ -43,6 +43,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=16.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.16.1.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.1.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.1\lib\BouncyCastle.Crypto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -69,6 +77,14 @@
     </Reference>
     <Reference Include="Microsoft.ApplicationInsights, Version=1.2.3.490, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.2.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.SignalR.SystemWeb, Version=2.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.SignalR.SystemWeb.2.2.1\lib\net45\Microsoft.AspNet.SignalR.SystemWeb.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -229,6 +245,11 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Admin\Change_Key.aspx" />
+    <Content Include="Admin\Console.aspx" />
+    <Content Include="Admin\Console_Login.aspx" />
+    <Content Include="Admin\View_Log.aspx" />
+    <Content Include="Admin\View_Report.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -241,15 +262,30 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Admin\barChart.cshtml" />
+    <Content Include="Admin\grarph.cshtml" />
+    <Content Include="Admin\pieChart.cshtml" />
+    <Content Include="Admin\Web.config" />
+    <Content Include="Logs\access.log" />
+    <Content Include="Logs\auth.log" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Imagesss\introductions_800_clr_10909-1.png" />
     <Content Include="Imagesss\user_mentee_med.jpg" />
+    <Content Include="Mentorship\Add_Mentor.aspx" />
+    <Content Include="Mentorship\Content\mentorship.css" />
+    <Content Include="Mentorship\Content\post_content.css" />
+    <Content Include="Mentorship\Mentorship.aspx" />
+    <Content Include="Mentorship\Ment_Post.aspx" />
+    <Content Include="Mentorship\Post_Content.aspx" />
+    <Content Include="References\LogParser.dll" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.js" />
+    <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -278,6 +314,7 @@
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="searchFriend.asmx" />
     <Content Include="Site.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config">
@@ -429,6 +466,44 @@
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Change_Key.aspx.cs">
+      <DependentUpon>Change_Key.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Change_Key.aspx.designer.cs">
+      <DependentUpon>Change_Key.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Console.aspx.cs">
+      <DependentUpon>Console.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Console.aspx.designer.cs">
+      <DependentUpon>Console.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Console_Login.aspx.cs">
+      <DependentUpon>Console_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Console_Login.aspx.designer.cs">
+      <DependentUpon>Console_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DataHolder.cs" />
+    <Compile Include="Admin\KeyManager.cs" />
+    <Compile Include="Admin\Search.cs" />
+    <Compile Include="Admin\View_Log.aspx.cs">
+      <DependentUpon>View_Log.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\View_Log.aspx.designer.cs">
+      <DependentUpon>View_Log.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\View_Report.aspx.cs">
+      <DependentUpon>View_Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\View_Report.aspx.designer.cs">
+      <DependentUpon>View_Report.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -457,8 +532,48 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Logger.cs" />
+    <Compile Include="Mentorship\Add_Mentor.aspx.cs">
+      <DependentUpon>Add_Mentor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mentorship\Add_Mentor.aspx.designer.cs">
+      <DependentUpon>Add_Mentor.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mentorship\Mentorship.aspx.cs">
+      <DependentUpon>Mentorship.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mentorship\Mentorship.aspx.designer.cs">
+      <DependentUpon>Mentorship.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mentorship\Ment_Post.aspx.cs">
+      <DependentUpon>Ment_Post.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mentorship\Ment_Post.aspx.designer.cs">
+      <DependentUpon>Ment_Post.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mentorship\Post_Content.aspx.cs">
+      <DependentUpon>Post_Content.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mentorship\Post_Content.aspx.designer.cs">
+      <DependentUpon>Post_Content.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="MyUserIdProvider.cs" />
+    <Compile Include="Notification.cs" />
+    <Compile Include="NotificationComponent.cs" />
+    <Compile Include="NotificationHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relation.cs" />
+    <Compile Include="RelationPost.cs" />
+    <Compile Include="RelationPostContent.cs" />
+    <Compile Include="searchFriend.asmx.cs">
+      <DependentUpon>searchFriend.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -474,6 +589,7 @@
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="Utils.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -483,7 +599,25 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Admin\Content\" />
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="MSUtil">
+      <Guid>{A7E75D86-41CD-4B6E-B4BD-CC2ED34B3FB0}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\openssl-net-master\ManagedOpenSsl\ManagedOpenSsl.csproj">
+      <Project>{73dcc218-655b-485f-8eac-0ce5f2f7343d}</Project>
+      <Name>ManagedOpenSsl</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
